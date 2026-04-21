@@ -1,0 +1,201 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.3.0 Chrome/140.0.7339.249 Electron/38.7.2 Safari/537.36" version="29.3.0">
+  <diagram id="sync-command-flow" name="SyncCommand">
+    <mxGraphModel dx="1426" dy="912" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2339" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="start" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontColor=#0D070D;" value="attachToInvoiceOut(paymentsIn, msApp)" vertex="1">
+          <mxGeometry height="60" width="280" x="530" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="loadAttr" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#0D070D;" value="Получить атрибут&#xa;paymentin.isAttachedToInvoice" vertex="1">
+          <mxGeometry height="60" width="220" x="560" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="api" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#0D070D;" value="msApp-&amp;gt;getJsonApi()" vertex="1">
+          <mxGeometry height="50" width="170" x="585" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="loadInvoices" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#0D070D;" value="Загрузить invoiceout&#xa;expand: organizationAccount, agent" vertex="1">
+          <mxGeometry height="60" width="280" x="530" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="filterInvoices" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#0D070D;" value="Отфильтровать:&#xa;sum != payedSum * 100" vertex="1">
+          <mxGeometry height="60" width="250" x="545" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="loopPayments" parent="1" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#0D070D;" value="Цикл по paymentsIn" vertex="1">
+          <mxGeometry height="70" width="210" x="565" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="paymentCheck" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#0D070D;" value="Есть organizationAccount href&#xa;и paymentPurpose?" vertex="1">
+          <mxGeometry height="100" width="250" x="545" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="skipPayment" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;fontColor=#0D070D;" value="Пропустить платеж" vertex="1">
+          <mxGeometry height="50" width="170" x="850" y="625" as="geometry" />
+        </mxCell>
+        <mxCell id="loopInvoices" parent="1" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#0D070D;" value="Цикл по invoicesOut" vertex="1">
+          <mxGeometry height="70" width="210" x="565" y="740" as="geometry" />
+        </mxCell>
+        <mxCell id="invoiceCheck" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#0D070D;" value="У счета есть&#xa;organizationAccount href?" vertex="1">
+          <mxGeometry height="100" width="250" x="545" y="850" as="geometry" />
+        </mxCell>
+        <mxCell id="compareRefs" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#0D070D;" value="Сравнить agent, account,&#xa;organization" vertex="1">
+          <mxGeometry height="60" width="220" x="560" y="990" as="geometry" />
+        </mxCell>
+        <mxCell id="refsEqual" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#0D070D;" value="Все совпадают?" vertex="1">
+          <mxGeometry height="90" width="200" x="570" y="1090" as="geometry" />
+        </mxCell>
+        <mxCell id="purposeCheck" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#0D070D;" value="Проверить номер счета&#xa;в paymentPurpose" vertex="1">
+          <mxGeometry height="60" width="250" x="545" y="1220" as="geometry" />
+        </mxCell>
+        <mxCell id="helper" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#0D070D;" value="invoiceNumberInPurpose(invoiceName, paymentPurpose)" vertex="1">
+          <mxGeometry height="60" width="340" x="500" y="1310" as="geometry" />
+        </mxCell>
+        <mxCell id="purposeFound" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#0D070D;" value="Номер найден?" vertex="1">
+          <mxGeometry height="90" width="200" x="570" y="1400" as="geometry" />
+        </mxCell>
+        <mxCell id="sumEqual" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#0D070D;" value="Сумма счета&#xa;равна сумме платежа?" vertex="1">
+          <mxGeometry height="100" width="250" x="545" y="1530" as="geometry" />
+        </mxCell>
+        <mxCell id="dateCheck" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#0D070D;" value="Искать дату счета&#xa;в paymentPurpose" vertex="1">
+          <mxGeometry height="60" width="240" x="550" y="1670" as="geometry" />
+        </mxCell>
+        <mxCell id="dateFound" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#0D070D;" value="Дата найдена?" vertex="1">
+          <mxGeometry height="90" width="200" x="570" y="1760" as="geometry" />
+        </mxCell>
+        <mxCell id="attach" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b1ddf0;strokeColor=#10739e;fontStyle=1;fontColor=#0D070D;" value="Связать payment и invoice:&#xa;attributes, operations, payments" vertex="1">
+          <mxGeometry height="70" width="270" x="535" y="1890" as="geometry" />
+        </mxCell>
+        <mxCell id="sendPayments" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontColor=#000000;" value="Если updatePayment не пуст:&#xa;sendEntity(&#39;paymentin&#39;, updatePayment)" vertex="1">
+          <mxGeometry height="70" width="300" x="150" y="2050" as="geometry" />
+        </mxCell>
+        <mxCell id="sendInvoices" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontColor=#0D070D;" value="Если updateInvoiceOut не пуст:&#xa;sendEntity(&#39;invoiceout&#39;, updateInvoiceOut)" vertex="1">
+          <mxGeometry height="70" width="300" x="520" y="2050" as="geometry" />
+        </mxCell>
+        <mxCell id="end" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontColor=#0D070D;" value="Конец" vertex="1">
+          <mxGeometry height="50" width="120" x="900" y="2060" as="geometry" />
+        </mxCell>
+        <mxCell id="helperDetail1" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#0D070D;" value="invoiceNumberInPurpose():&#xa;1. Удаляет все нецифровые символы&#xa;2. Схлопывает пробелы&#xa;3. Делит строку на части&#xa;4. Ищет точное совпадение с номером счета" vertex="1">
+          <mxGeometry height="110" width="290" x="900" y="1295" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="start" style="endArrow=block;html=1;rounded=0;fontColor=#0D070D;" target="loadAttr">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="loadAttr" style="endArrow=block;html=1;rounded=0;fontColor=#0D070D;" target="api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="api" style="endArrow=block;html=1;rounded=0;fontColor=#0D070D;" target="loadInvoices">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="loadInvoices" style="endArrow=block;html=1;rounded=0;fontColor=#0D070D;" target="filterInvoices">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="filterInvoices" style="endArrow=block;html=1;rounded=0;fontColor=#0D070D;" target="loopPayments">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="loopPayments" style="endArrow=block;html=1;rounded=0;fontColor=#0D070D;" target="paymentCheck">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="paymentCheck" style="endArrow=block;html=1;rounded=0;fontColor=#0D070D;" target="skipPayment" value="нет">
+          <mxGeometry relative="1" x="0.2727" y="20" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="paymentCheck" style="endArrow=block;html=1;rounded=0;fontColor=#0D070D;" target="loopInvoices" value="да">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="skipPayment" style="endArrow=block;html=1;rounded=0;fontColor=#0D070D;" target="loopPayments">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="990" y="560" />
+              <mxPoint x="890" y="520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="loopInvoices" style="endArrow=block;html=1;rounded=0;fontColor=#0D070D;" target="invoiceCheck">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="invoiceCheck" style="endArrow=block;html=1;rounded=0;" target="loopInvoices" value="нет">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="460" y="900" />
+              <mxPoint x="460" y="775" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="invoiceCheck" style="endArrow=block;html=1;rounded=0;fontColor=#0D070D;" target="compareRefs" value="да">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" edge="1" parent="1" source="compareRefs" style="endArrow=block;html=1;rounded=0;fontColor=#0D070D;" target="refsEqual">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" edge="1" parent="1" source="refsEqual" style="endArrow=block;html=1;rounded=0;" target="loopInvoices" value="нет">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="460" y="1135" />
+              <mxPoint x="460" y="775" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e15" edge="1" parent="1" source="refsEqual" style="endArrow=block;html=1;rounded=0;fontColor=#0D070D;" target="purposeCheck" value="да">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e16" edge="1" parent="1" source="purposeCheck" style="endArrow=block;html=1;rounded=0;fontColor=#0D070D;" target="helper">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e17" edge="1" parent="1" source="helper" style="endArrow=block;html=1;rounded=0;fontColor=#0D070D;" target="purposeFound">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e18" edge="1" parent="1" source="purposeFound" style="endArrow=block;html=1;rounded=0;fontColor=#0D070D;" target="attach" value="да">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="880" y="1520" />
+              <mxPoint x="870" y="1870" />
+              <mxPoint x="805" y="1925" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e19" edge="1" parent="1" source="purposeFound" style="endArrow=block;html=1;rounded=0;fontColor=#1F111F;" target="sumEqual" value="нет">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e20" edge="1" parent="1" source="sumEqual" style="endArrow=block;html=1;rounded=0;fontColor=#0D070D;" target="dateCheck" value="да">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e21" edge="1" parent="1" source="sumEqual" style="endArrow=block;html=1;rounded=0;" target="loopInvoices" value="нет">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="440" y="1580" />
+              <mxPoint x="440" y="775" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e22" edge="1" parent="1" source="dateCheck" style="endArrow=block;html=1;rounded=0;fontColor=#0D070D;" target="dateFound">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e23" edge="1" parent="1" source="dateFound" style="endArrow=block;html=1;rounded=0;fontColor=#0D070D;" target="attach" value="да">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e24" edge="1" parent="1" source="dateFound" style="endArrow=block;html=1;rounded=0;" target="loopInvoices" value="нет">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="440" y="1805" />
+              <mxPoint x="440" y="775" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e25" edge="1" parent="1" source="attach" style="endArrow=block;html=1;rounded=0;" target="sendPayments">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="430" y="2000" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e26" edge="1" parent="1" source="attach" style="endArrow=block;html=1;rounded=0;fontColor=#0D070D;" target="sendInvoices">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e27" edge="1" parent="1" source="sendPayments" style="endArrow=block;html=1;rounded=0;" target="sendInvoices">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e28" edge="1" parent="1" source="sendInvoices" style="endArrow=block;html=1;rounded=0;fontColor=#0D070D;" target="end">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
