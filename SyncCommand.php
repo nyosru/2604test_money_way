@@ -84,8 +84,9 @@ class SyncCommand
                     $attachedByPurpose = strpos($payment['paymentPurpose'], $prepareDate) !== false;
                 }
 
-                // найти сумму и сравнить
-                if (!$attachedByPurpose && $arr['sum'] != $payment['sum']) {
+                // Не привязываем платёж только по совпадению реквизитов и суммы:
+                // в назначении должен подтвердиться номер счёта или дата выставления.
+                if (!$attachedByPurpose) {
                     continue;
                 }
 
@@ -116,4 +117,3 @@ class SyncCommand
     /** Дальшейшие методы класса */
 
 }
-
